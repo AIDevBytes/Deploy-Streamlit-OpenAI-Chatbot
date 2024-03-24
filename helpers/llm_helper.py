@@ -1,18 +1,15 @@
-from openai import OpenAI
 from config import Config
 
 system_prompt = Config.SYSTEM_PROMPT
 
-def chat(user_prompt, model, max_tokens=200, temp=0.7):
-    client = OpenAI()
-
+def chat(openai_client, prompt, model, max_tokens=200, temp=0.7):
     # create chat using OpenAI LLM
     # https://platform.openai.com/docs/api-reference/chat/create
-    completion = client.chat.completions.create(
+    completion = openai_client.chat.completions.create(
     model=model,
     messages=[
             {"role": "system", "content": system_prompt},
-            {"role": "user", "content":  user_prompt}
+            {"role": "user", "content":  prompt}
         ],
         temperature=temp,
         max_tokens=max_tokens,
