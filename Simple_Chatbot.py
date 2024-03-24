@@ -31,7 +31,7 @@ with st.sidebar:
     max_token_length = st.number_input('Max Token Length', value=1000, min_value=200, max_value=1000, step=100, 
                                             help="Maximum number of tokens to be used when generating output.")
     
-    api_key = st.text_input("API Key", type="password")
+    api_key = st.text_input("OpenAI API Key", type="password", placeholder="Enter your OpenAI API Key sk-**************")
     
 # checks for existing messages in session state
 # https://docs.streamlit.io/library/api-reference/session-state
