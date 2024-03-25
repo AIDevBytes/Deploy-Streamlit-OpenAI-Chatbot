@@ -45,6 +45,10 @@ for message in st.session_state.messages:
         st.markdown(message["content"])
 
 if user_prompt := st.chat_input("What questions do you have about the document?"):
+    if api_key == "":
+        st.error("You must enter an API Key in the Chat Options to left")
+        st.stop()
+
     # Display user prompt in chat message container
     with st.chat_message("user"):
         st.markdown(user_prompt)
